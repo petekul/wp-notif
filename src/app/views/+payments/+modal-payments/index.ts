@@ -1,0 +1,1 @@
+export { ModalPaymentsModule } from './modal-payments.module';

@@ -1,0 +1,53 @@
+<nav class="wp-top-menu navbar navbar-expand-lg navbar-light fixed-top">
+    <button class="wp-mobile-nav btn d-lg-none" (click)="mainMenu = toggleStatus(mainMenu)" type="button" data-toggle="collapse" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <a class="wp-logo" [routerLink]=" ['./home'] ">
+        <img [src]="worldpayLogo">
+    </a>
+
+    <a class="nav-item nav-link" [routerLink]=" ['./home'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> Manage </a>
+    <a class="nav-item nav-link" [routerLink]=" ['./forms'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">  Create </a>
+
+    <div class="wp-top-bar">
+      <nav class="navbar-nav ml-auto">
+          <a class="nav-item" [routerLink]="" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> <i class="fa fa-comments-o" aria-hidden="true"></i> Support </a>
+      </nav>
+      <div class="wp-profile dropdown">
+          <button (click)="profileBtn = toggleStatus(profileBtn)" class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <img class="photo" [src]="profilePhoto"> <span> John Smith </span>
+          </button>
+          <div class="dropdown-menu" [ngClass]="profileBtn === true ? 'open' : 'closed'">
+            <button class="dropdown-item" type="button"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</button>
+            <button class="dropdown-item" type="button"><i class="fa fa-gear" aria-hidden="true"></i> Settings</button>
+            <button class="dropdown-item" type="button"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+          </div>
+        </div>
+    </div>
+</nav>
+  
+<!-- <div class="container-fluid" [ngClass]="mainMenu === true ? 'open' : 'closed'">
+  <div class="wp-overlay" (click)="mainMenu = toggleStatus(mainMenu)"></div>
+  <div class="row">
+    <nav class="wp-sidebar bg-wp-gray sidebar">
+      <nav class="nav flex-column">
+        <h2 class="nav-title">My Dashboard</h2>
+        <a class="nav-item nav-link" [routerLink]=" ['./home'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> <i class="fa fa-area-chart" aria-hidden="true"></i> Overview </a>
+        <a class="nav-item nav-link" [routerLink]=" ['./components'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> <i class="fa fa-code" aria-hidden="true"></i> Components </a>
+        <a class="nav-item nav-link" [routerLink]=" ['./forms'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> <i class="fa fa-file-text-o" aria-hidden="true"></i> Forms </a>
+        <a class="nav-item nav-link" [routerLink]=" ['./payments'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: false}"> <i class="fa fa-credit-card" aria-hidden="true"></i> Payments </a>
+      </nav>
+      <nav class="nav flex-column">
+        <h2 class="nav-title">More</h2>
+        <a class="nav-item nav-link"> <i class="fa fa-angle-right" aria-hidden="true"></i> Send Money </a>
+        <a class="nav-item nav-link"> <i class="fa fa-angle-right" aria-hidden="true"></i> Withdraw </a>
+        <a class="nav-item nav-link"> <i class="fa fa-angle-right" aria-hidden="true"></i> Tasks </a>
+      </nav>
+    </nav>
+  -->
+    <main class="wp-main" role="main">
+      <router-outlet></router-outlet>
+    </main>
+  <!-- </div>
+</div>  -->

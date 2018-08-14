@@ -1,0 +1,787 @@
+
+<div class="wp-block light margin0">
+    <h3><i class="fa fa-cubes"></i> Pipes</h3>
+    <p>Pipes are a way to write display-value transformations that you can declare in your HTML.</p>
+    <a href="https://danrevah.gitbooks.io/angular-pipes/" target="_blank"><button type="button" class="btn btn-secondary btn-sm">Read Full Documentation</button></a>  
+</div>
+
+<div class="wp-block dark margin0" ngNonBindable>
+  <h2>String</h2>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> repeat</h3>
+    <p>Repeats a string n times</p>
+    <p><strong>Usage:</strong> <code>string | repeat: times: [separator|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &apos;example&apos; | repeat: 3: &apos;@&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;example@example@example&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> scan</h3>
+    <p>Scans string and replace placeholders by equivalent member of the array</p>
+    <p><strong>Usage:</strong> <code>string | scan: [ARRAY]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;Hey &#123;0&#125;, &#123;1&#125;&apos; | scan: [&apos;foo&apos;, &apos;bar&apos;]&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;Hey foo, bar&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> shorten</h3>
+    <p>Shortening a string by length and providing a custom string to denote an omission</p>
+    <p><strong>Usage:</strong> <code>string | shorten: length: [suffix|optional]: [wordBreak boolean|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;Hey foo bar&apos; | shorten: 3: &apos;...&apos;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;Hey...&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> stripTags</h3>
+    <p>Strips a HTML tags from string and providing which tags should not be removed</p>
+    <p><strong>Usage:</strong> <code>string | stripTags: [ARRAY]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;foo&quot;</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>&apos; | stripTags &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;foo bar&quot; --&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>foo<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;foo&quot;</span>&gt;</span>bar<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>&apos; | stripTags: &apos;p&apos;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: foo &lt;p class=&quot;foo&quot;&gt;bar&lt;/p&gt; --&gt;</span>
+    </code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> ucfirst</h3>
+    <p>Uppercase first letter of first word</p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo bar&apos; | ucfirst &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;Foo bar&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> ucwords</h3>
+    <p>Uppercase first letter every word</p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo bar&apos; | ucwords &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;Foo Bar&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> trim</h3>
+    <p>Strips characters from the beginning and end of a string (default character is space).</p>
+    <p><strong>Usage:</strong> <code>string | trim: [characters|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;  foo  &apos; | trim &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;foo&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foobarfoo&apos; | trim: &apos;foo&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;bar&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> ltrim</h3>
+    <p>Strips characters from the beginning of a string (default character is space).</p>
+    <p><strong>Usage:</strong> <code>string | ltrim: [characters|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;  foo  &apos; | ltrim &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;foo  &quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foobarfoo&apos; | ltrim: &apos;foo&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;barfoo&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> rtrim</h3>
+    <p>Strips characters from the end of a string (default character is space).</p>
+    <p><strong>Usage:</strong> <code>string | rtrim: [characters|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;  foo  &apos; | rtrim &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;  foo&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foobarfoo&apos; | rtrim: &apos;foo&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;foobar&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> reverse</h3>
+    <p>Reverses a string</p>
+    <p><strong>Usage:</strong> <code>string | reverse</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo bar&apos; | reverse &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;rab oof&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> slugify</h3>
+    <p>Slugify a string (lower case and add dash between words).</p>
+    <p><strong>Usage:</strong> <code>string | slugify</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;Foo Bar&apos; | slugify &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;foo-bar&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;Some Text To Slugify&apos; | slugify &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;some-text-to-slugify&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> camelize</h3>
+    <p>Camelize a string replaces dashes and underscores and converts to camelCase string.</p>
+    <p><strong>Usage:</strong> <code>string | camelize</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo_bar&apos; | camelize &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;fooBar&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;some_dashed-with-underscore&apos; | camelize &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;someDashedWithUnderscore&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;-dash_first-&apos; | camelize &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;dashFirst&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> latinise</h3>
+    <p>Removes accents from Latin characters.</p>
+    <p><strong>Usage:</strong> <code>string | latinise</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;F&#xE9;&#xE9;&apos; | latinise &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;Fee&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo&apos; | latinise &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;foo&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> lines</h3>
+    <p>Converts a string with new lines into an array of each line.</p>
+    <p><strong>Usage:</strong> <code>string | lines</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;Some\nSentence with\r\nNew line&apos; | lines &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;[&apos;Some&apos;, &apos;Sentence with&apos;, &apos;New line&apos;]&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> underscore</h3>
+    <p>Converts camelCase string to underscore.</p>
+    <p><strong>Usage:</strong> <code>string | underscore</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;angularIsAwesome&apos; | underscore &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;angular_is_awesome&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;FooBar&apos; | underscore &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;foo_bar&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> test</h3>
+    <p>Tests if a string matches a pattern.</p>
+    <p><strong>Usage:</strong> <code>string | test: RegExp: Flags</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo 42&apos; | test: &apos;[\\d]+$&apos;: &apos;g&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: true --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;42 foo&apos; | test: &apos;[\\d]+$&apos;: &apos;g&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: false --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;FOO&apos; | test: &apos;^foo&apos;: &apos;i&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: true --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> match</h3>
+    <p>Returns array of matched elements in string.</p>
+    <p><strong>Usage:</strong> <code>string | match: RegExp: Flags</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo 42&apos; | match: &apos;[\\d]+$&apos;: &apos;g&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &apos;42&apos; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;42 foo&apos; | match: &apos;[\\d]+$&apos;: &apos;g&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: null --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;FOO&apos; | match: &apos;^foo&apos;: &apos;i&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &apos;FOO&apos; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> lpad</h3>
+    <p>Left pad a string to a given length using a given pad character (default is a space)</p>
+    <p><strong>Usage:</strong> <code>string | lpad: length: [padCharacter:string|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;foo&apos; | lpad: 5&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;  foo&quot; --&gt;</span>
+<span class="hljs-comment">&lt;!-- Cast a number to string in order to left pad it with zeros --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;String(3) | lpad: 5: &apos;0&apos;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;00003&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> rpad</h3>
+    <p>Right pad a string to a given length using a given pad character  (default is a space)</p>
+    <p><strong>Usage:</strong> <code>string | rpad: length: [padCharacter:string|optional]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123;&apos;Foo&apos; | rpad: 5: &apos;#&apos;&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;Foo##&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+</div>
+
+<div class="wp-block light margin0" ngNonBindable>
+  <h2>Array</h2>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> diff</h3>
+    <p>Returns array of diff between arrays </p>
+    <p><strong>Usage:</strong> <code>array | diff: [ARRAY]: [ARRAY]: ... : [ARRAY]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | diff: [1, 2]&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [3, 4] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> flatten</h3>
+    <p>Flattens nested array, passing shallow will mean it will only be flattened a single level</p>
+    <p><strong>Usage:</strong> <code>array | flatten: [shallow|optional]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,[<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>],[<span class="hljs-number">10</span>,<span class="hljs-number">11</span>,<span class="hljs-number">12</span>,<span class="hljs-number">13</span>,[<span class="hljs-number">14</span>],[<span class="hljs-number">15</span>],[<span class="hljs-number">16</span>, [<span class="hljs-number">17</span>]]]]];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | flatten&quot;</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Array: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> initial</h3>
+    <p>Slicing off the end of the array by n elements</p>
+    <p><strong>Usage:</strong> <code>array | initial: n</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [first, second, third];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | initial: 1&quot;</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Array: [first, second] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> tail</h3>
+    <p>Slicing off the start of the array by n elements</p>
+    <p><strong>Usage:</strong> <code>array | tail: n</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [first, second, third];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | tail: 1&quot;</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Array: [second, third] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> intersection</h3>
+    <p>Returns the intersections of an arrays</p>
+    <p><strong>Usage:</strong> <code>array | intersection: [ARRAY]: [ARRAY]: ... : [ARRAY]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | intersection: [1, 2, 3]: [3, 6]&quot;</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Array: [3] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> reverse</h3>
+    <p>Reverses an array</p>
+    <p><strong>Usage:</strong> <code>array | reverse</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | reverse&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [3, 2, 1] --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> truthify</h3>
+    <p>Removes un-truthy values from array</p>
+    <p><strong>Usage:</strong> <code>array | truthify</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-literal">null</span>, <span class="hljs-number">1</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&apos;&apos;</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | truthify&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [1, 2, 3, 4] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> union</h3>
+    <p>Combine two arrays</p>
+    <p><strong>Usage:</strong> <code>array | union: [ARRAY]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | union: [[4]]&quot;</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Array: [1, 2, 3, 4] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> unique</h3>
+    <p>Removes duplicates from array</p>
+    <p><strong>Usage:</strong> <code>array | unique: &apos;Property (Optional)&apos;</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | unique&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [1, 2, 3] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> without</h3>
+    <p>Returns array without specific elements</p>
+    <p><strong>Usage:</strong> <code>array | without: [ARRAY]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | without: [1,3]&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [2, 2] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> pluck</h3>
+    <p>Returns array of properties values</p>
+    <p><strong>Usage:</strong> <code>array | pluck: propertyName</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | pluck: &apos;a&apos;&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [1, 2, 3] --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | pluck: &apos;b.c&apos;&quot;</span>&gt;</span> <span class="hljs-comment">&lt;!-- Array: [4, 5, 6] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> shuffle</h3>
+    <p>Returns randomly shuffled array</p>
+    <p><strong>Usage:</strong> <code>array | shuffle</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.items = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of items | shuffle&quot;</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Array: [4, 1, 6, 2, 5, 3] --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> every</h3>
+    <p>Returns true if every elements of the array fits the predicate otherwise false</p>
+    <p><strong>Usage:</strong> <code>array | every: predicate</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.itemsOne = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>];
+<span class="hljs-keyword">this</span>.itemsTwo = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">this</span>.itemsThree = [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">this</span>.predicate = (value: <span class="hljs-built_in">any</span>, index: <span class="hljs-built_in">number</span>, array: <span class="hljs-built_in">any</span>[]): <span class="hljs-built_in">boolean</span> =&gt; &#123;
+<span class="hljs-keyword">return</span> value === <span class="hljs-number">1</span>;
+&#125;;</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; itemsOne | every: predicate &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; itemsTwo | every: predicate &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; itemsThree | every: predicate &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> some</h3>
+    <p>Returns true if some elements of the array fits the predicate otherwise false</p>
+    <p><strong>Usage:</strong> <code>array | some: predicate</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.itemsOne = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>];
+<span class="hljs-keyword">this</span>.itemsTwo = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">this</span>.itemsThree = [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">this</span>.predicate = (value: <span class="hljs-built_in">any</span>, index: <span class="hljs-built_in">number</span>, array: <span class="hljs-built_in">any</span>[]): <span class="hljs-built_in">boolean</span> =&gt; &#123;
+<span class="hljs-keyword">return</span> value === <span class="hljs-number">1</span>;
+&#125;;</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; itemsOne | some: predicate &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; itemsTwo | some: predicate &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; itemsThree | some: predicate &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> sample</h3>
+    <p>Returns sample items randomly from array</p>
+    <p><strong>Usage:</strong> <code>array | sample: [amount | default = 1]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; [1, 2, 3, 4] | sample &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;[2]&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; [1, 2, 3, 4] | sample: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;[4, 3]&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> groupBy</h3>
+    <p>Returns object of grouped by items by discriminator, and supports nested properties.</p>
+    <p><strong>Usage:</strong> <code>array | groupBy: [string[] | string | Function]: [delimiter: string | optional, default = &apos;|&apos;]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.arrayObject = [
+  &#123;id: <span class="hljs-number">1</span>, elm: <span class="hljs-string">&apos;foo&apos;</span>, value: <span class="hljs-number">0</span>&#125;, 
+  &#123;id: <span class="hljs-number">2</span>, elm: <span class="hljs-string">&apos;bar&apos;</span>, value: <span class="hljs-number">1</span>&#125;, 
+  &#123;id: <span class="hljs-number">3</span>, elm: <span class="hljs-string">&apos;foo&apos;</span>, value: <span class="hljs-number">2</span>&#125;, 
+  &#123;id: <span class="hljs-number">4</span>, elm: <span class="hljs-string">&apos;foo&apos;</span>, value: <span class="hljs-number">2</span>&#125;
+];
+    
+<span class="hljs-keyword">this</span>.arrayNestedObject = [
+  &#123;id: <span class="hljs-number">1</span>, prop: &#123; deep: <span class="hljs-string">&apos;foo&apos;</span> &#125;&#125;,
+  &#123;id: <span class="hljs-number">2</span>, prop: &#123; deep: <span class="hljs-string">&apos;bar&apos;</span> &#125;&#125;,
+  &#123;id: <span class="hljs-number">3</span>, prop: &#123; deep: <span class="hljs-string">&apos;foo&apos;</span> &#125;&#125;,
+  &#123;id: <span class="hljs-number">4</span>, prop: &#123; deep: <span class="hljs-string">&apos;bar&apos;</span> &#125;&#125;
+];
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; arrayObject | groupBy: &apos;elm&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;&#123;foo: [&#123;id: 1, elm: &apos;foo&apos;, value: 0&#125;, &#123;id: 3, elm: &apos;foo&apos;, value: 2&#125;, &#123;id: 4, elm: &apos;foo&apos;, value: 2&#125;], bar: [&#123;id: 2, elm: &apos;bar&apos;, value: 1&#125;]&#125;&quot; --&gt;</span>
+    
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; arrayObject | groupBy: [&apos;elm&apos;, &apos;value&apos;] &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;&#123;&apos;foo|0&apos;: [&#123;elm: foo, value: 0&#125;], &apos;bar|1&apos;: [&#123;elm:bar,value: 1&#125;], &apos;foo|2&apos;: [&#123;elm:foo, value: 2&#125;], &apos;bar|3&apos;: [&#123;elm:bar, value: 3&#125;]&#125;&quot; --&gt;</span>
+    
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; arrayObject | groupBy: [&apos;elm&apos;, &apos;value&apos;]: &apos;_&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;&#123;foo_0: [&#123;elm: foo, value: 0&#125;], bar_1: [&#123;elm:bar,value: 1&#125;], foo_2: [&#123;elm:foo, value: 2&#125;], bar_3: [&#123;elm:bar, value: 3&#125;]&#125;&quot; --&gt;</span>
+    
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; arrayNestedObject | groupBy: &apos;prop.deep&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output:&#123;foo: [&#123;id: 1, prop: &#123;deep: foo&#125;&#125;, &#123;id: 3, prop: &#123;deep: foo&#125;&#125;], bar: [&#123;id: 2, prop: &#123;deep: bar&#125;&#125;, &#123;id: 4, prop: &#123;deep: bar&#125;&#125;]&#125;&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> filterBy</h3>
+    <p>Returns object array of grouped by items by discriminator</p>
+    <p><strong>Usage:</strong> <code>array | filterBy: [prop, nested.prop, ...]: search: [strict | optional]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.users = [
+  &#123;id: <span class="hljs-number">1</span>, first_name: <span class="hljs-string">&apos;John&apos;</span>, last_name: <span class="hljs-string">&apos;Doe&apos;</span>, work: &#123; company: <span class="hljs-string">&apos;Foo Tech&apos;</span> &#125;&#125;,
+  &#123;id: <span class="hljs-number">2</span>, first_name: <span class="hljs-string">&apos;Jane&apos;</span>, last_name: <span class="hljs-string">&apos;West&apos;</span>, work: &#123; company: <span class="hljs-string">&apos;AAA Solutions&apos;</span> &#125;&#125;,
+  &#123;id: <span class="hljs-number">3</span>, first_name: <span class="hljs-string">&apos;Bruce&apos;</span>, last_name: <span class="hljs-string">&apos;John&apos;</span>, work: &#123; company: <span class="hljs-string">&apos;Bar Tech&apos;</span> &#125;&#125;,
+  &#123;id: <span class="hljs-number">4</span>, first_name: <span class="hljs-string">&apos;William&apos;</span>, last_name: <span class="hljs-string">&apos;Cent&apos;</span>, work: &#123; company: <span class="hljs-string">&apos;Foo Tech&apos;</span> &#125;&#125;
+];</code></pre>
+    <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- Returns users with `id` of 1 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; users | filterBy: [&apos;id&apos;]: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;[&#123;id: 1, first_name: &apos;John&apos;, last_name: &apos;Doe&apos;, work: &#123; company: &apos;Foo Tech&apos;, previous_company: &apos;&apos; &#125;&#125;]&quot; --&gt;</span>
+    
+<span class="hljs-comment">&lt;!-- filterBy also support nested properties --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; users | filterBy: [&apos;work.company&apos;]: &apos;Bar Tech&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;[&#123; &quot;id&quot;: 3, &quot;first_name&quot;: &quot;Bruce&quot;, &quot;last_name&quot;: &quot;John&quot;, &quot;work&quot;: &#123; &quot;company&quot;: &quot;Bar Tech&quot;, &quot;previous_company&quot;: &quot;&quot; &#125; &#125;]&quot; --&gt;</span>
+    
+<span class="hljs-comment">&lt;!-- Return users whose first name or last name is &apos;John&apos;. --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; users | filterBy: [&apos;first_name&apos;, &apos;last_name&apos;]: &apos;John&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Output: &quot;[&#123;id: 1, first_name: &apos;John&apos;, last_name: &apos;Doe&apos;, work: &#123; company: &apos;Foo Tech&apos;, previous_company: &apos;&apos; &#125;&#125;]&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> orderBy</h3>
+    <p>Returns ordered array by configuration </p>
+    <p><strong>Usage:</strong> <code>array | orderBy: [prop, nested.prop, array of props, ...]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">const</span> numbers = [<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>];
+    
+    <span class="hljs-keyword">const</span> obj = [
+  &#123;id: <span class="hljs-number">4</span>, name: <span class="hljs-string">&apos;Dave&apos;</span>, amount: <span class="hljs-number">2</span>&#125;,
+  &#123;id: <span class="hljs-number">2</span>, name: <span class="hljs-string">&apos;Michael&apos;</span>, amount: <span class="hljs-number">2</span>&#125;,
+  &#123;id: <span class="hljs-number">3</span>, name: <span class="hljs-string">&apos;Dan&apos;</span>, amount: <span class="hljs-number">1</span>&#125;,
+  &#123;id: <span class="hljs-number">1</span>, name: <span class="hljs-string">&apos;John&apos;</span>, amount: <span class="hljs-number">1</span>&#125;
+];
+    
+<span class="hljs-keyword">const</span> deepObj = [
+  &#123;id: <span class="hljs-number">1</span>, name: <span class="hljs-string">&apos;John&apos;</span>, amount: <span class="hljs-number">1337</span>, deep: &#123;prop: <span class="hljs-number">4</span>&#125;&#125;,
+  &#123;id: <span class="hljs-number">2</span>, name: <span class="hljs-string">&apos;Michael&apos;</span>, amount: <span class="hljs-number">42</span>, deep: &#123;prop: <span class="hljs-number">2</span>&#125;&#125;,
+  &#123;id: <span class="hljs-number">3</span>, name: <span class="hljs-string">&apos;Dan&apos;</span>, amount: <span class="hljs-number">1</span>, deep: &#123;prop: <span class="hljs-number">1</span>&#125;&#125;,
+  &#123;id: <span class="hljs-number">4</span>, name: <span class="hljs-string">&apos;Dave&apos;</span>, amount: <span class="hljs-number">2</span>, deep: &#123;prop: <span class="hljs-number">3</span>&#125;&#125;
+];</code></pre>
+    <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- Returns array ordered by value --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; numbers | orderBy &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  <span class="hljs-comment">&lt;!-- Output: [1, 2, 3] --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; numbers | orderBy: &apos;-&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  <span class="hljs-comment">&lt;!-- Output: [3, 2, 1] --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Returns array ordered by value of property --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; deepObj | orderBy: &apos;amount&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  
+<span class="hljs-comment">&lt;!-- Output: [&#123;id: 3, ...&#125;, &#123;id: 4, ...&#125;, &#123;id: 2, ...&#125;, &#123;id: 1, ...&#125;] --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; deepObj | orderBy: &apos;-amount&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  
+<span class="hljs-comment">&lt;!-- Output: [&#123;id: 1, ...&#125;, &#123;id: 2, ...&#125;, &#123;id: 4, ...&#125;, &#123;id: 3, ...&#125;] --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Returns array ordered by value of deep property --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; deepObj | orderBy: &apos;deep.prop&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  
+<span class="hljs-comment">&lt;!-- Output: [&#123;id: 3, ...&#125;, &#123;id: 2, ...&#125;, &#123;id: 4, ...&#125;, &#123;id: 1, ...&#125;] --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; deepObj | orderBy: &apos;-deep.prop&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  
+<span class="hljs-comment">&lt;!-- Output: [&#123;id: 1, ...&#125;, &#123;id: 4, ...&#125;, &#123;id: 2, ...&#125;, &#123;id: 3, ...&#125;] --&gt;</span>
+
+<span class="hljs-comment">&lt;!-- Returns array ordered by mutliple properties --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; obj | orderBy: [&apos;amount&apos;, &apos;id&apos;] &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>  
+<span class="hljs-comment">&lt;!-- Output: [&#123;id: 1, ...&#125;, &#123;id: 3, ...&#125;, &#123;id: 2, ...&#125;, &#123;id: 4, ...&#125;] --&gt;</span>
+</code></pre>
+  </div>
+
+</div>
+
+<div class="wp-block dark margin0" ngNonBindable>
+  <h2>Object</h2>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> keys</h3>
+    <p>Returns array of object keys</p>
+    <p><strong>Usage:</strong> <code>object | keys</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | keys &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;[&apos;foo&apos;, &apos;bar&apos;]&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> values</h3>
+    <p>Returns array of object values</p>
+    <p><strong>Usage:</strong> <code>object | values</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | values &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;[1, 2]&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> pairs</h3>
+    <p>Returns array of an object key value pairs</p>
+    <p><strong>Usage:</strong> <code>object | pairs</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | pairs &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;[[&apos;foo&apos;, 1], [&apos;bar&apos;, 2]]&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: [1, 2], bar: [3, 4]&#125; | pairs &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;[[&apos;foo&apos;, [1, 2]], [&apos;bar&apos;, [3, 4]]]&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> pick</h3>
+    <p>Returns object with picked keys from object</p>
+    <p><strong>Usage:</strong> <code>object | pick: [key | string]]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | pick: &apos;foo&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;&#123;foo: 1&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | pick: &apos;foo&apos;: &apos;bar&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;&#123;foo: 1, bar: 2&#125;&quot; --&gt;</span></code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> omit</h3>
+    <p>Returns object after omitting keys from object (opposite of pick)</p>
+    <p><strong>Usage:</strong> <code>object | omit: [key | string]]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | omit: &apos;foo&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;bar: 2&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | omit: &apos;foo&apos;: &apos;bar&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;&#125;&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> invert</h3>
+    <p>Returns object with inverted keys and values. in case of equal values, subsequent values overwrite property assignments of previous values.</p>
+    <p><strong>Usage:</strong> <code>object | invert</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | invert &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-comment">&lt;!-- Output: &quot;&#123;1: &apos;foo&apos;, 2: &apos;bar&apos;&#125;&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> invertBy</h3>
+    <p>Returns object with inverted keys and values. in case of equal values, will add to an array.</p>
+    <p><strong>Usage:</strong> <code>object | invertBy: [Function | optional]</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.cb = (value): <span class="hljs-built_in">string</span> =&gt; &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">`name_<span class="hljs-subst">$&#123;value&#125;</span>`</span>;
+&#125;;
+    </code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | invertBy &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;1: [&apos;foo&apos;], 2: [&apos;bar&apos;]&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;foo: 1, bar: 2&#125; | invertBy: cb &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;name_1: [&apos;foo&apos;], name_2: [&apos;bar&apos;]&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;a: 1, b: 2, c: 1, d: 2&#125; | invertBy &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;1: [&apos;a&apos;, &apos;c&apos;], 2: [&apos;b&apos;, &apos;d&apos;]&#125;&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> diffObj</h3>
+    <p>Returns a diff object of two objects</p>
+    <p><strong>Usage:</strong> <code>object | diffObj: Object</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;a: 1&#125; | diffObj: &#123;a: 1&#125; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;a: 1&#125; | diffObj: &#123;a: 2&#125; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;a: 1&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;a: 1, b: 2&#125; | diffObj: &#123;a: 1, b: 1&#125; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;b: 2&#125;&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &#123;a: 1, b: 2, c: &#123;d: 3&#125; &#125; | diffObj: &#123;a: 1, b: 1, c: &#123;d: 1&#125; &#125; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;&#123;b: 2, c: &#123;d: 3&#125;&#125;&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+</div>
+<div class="wp-block light margin0" ngNonBindable>
+
+  <h2>Math</h2>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> min</h3>
+    <p>Returns the minimum of a given array</p>
+    <p><strong>Usage:</strong> <code>array | min</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; [1, 2, 3, 1, 2, 3] | min &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;1&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> max</h3>
+    <p>Returns the maximum of a given array</p>
+    <p><strong>Usage:</strong> <code>array | max</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; [1, 2, 3, 1, 2, 3] | max &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;3&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> sum</h3>
+    <p>Returns the sum of a given array</p>
+    <p><strong>Usage:</strong> <code>array | sum</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; [1, 2, 3, 4] | sum &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;10&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> percentage</h3>
+    <p>Returns percentage between numbers </p>
+    <p><strong>Usage:</strong> <code>number | percentage: [total | default = 100]: [floor | default = false]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 5 | percentage &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;5&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 5 | percentage: 160 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;3.125&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 5 | percentage: 160: true &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;3&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> ceil</h3>
+    <p>Returns ceil of a number by precision </p>
+    <p><strong>Usage:</strong> <code>number | ceil: [precision | default = 0]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.123 | ceil &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;43&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.123 | ceil: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;42.13&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> floor</h3>
+    <p>Returns floor of a number by precision </p>
+    <p><strong>Usage:</strong> <code>number | floor: [precision | default = 0]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.123 | floor &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;42&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.123 | floor: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;42.12&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> round</h3>
+    <p>Returns round of a number by precision </p>
+    <p><strong>Usage:</strong> <code>number | round: [precision | default = 0]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.4 | round &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;42&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.5 | round &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;43&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 42.123 | round: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;42.12&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> sqrt</h3>
+    <p>Returns the square root of a number </p>
+    <p><strong>Usage:</strong> <code>number | sqrt</code></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 9 | sqrt &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;3&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> pow</h3>
+    <p>Returns the power of a number </p>
+    <p><strong>Usage:</strong> <code>number | pow: [power | default = 2]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 3 | pow &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;9&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 3 | pow: 3 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;27&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> degrees</h3>
+    <p>Returns the degrees of a number in radians </p>
+    <p><strong>Usage:</strong> <code>number | degrees</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 3.141592653589793 | degrees &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;180&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> radians</h3>
+    <p>Returns the radians of a number in degrees </p>
+    <p><strong>Usage:</strong> <code>number | radians</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 180 | radians &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;3.141592653589793&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> bytes</h3>
+    <p>Returns bytes with a unit symbol</p>
+    <p><strong>Usage:</strong> <code>number | bytes: [precision]</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 10 | bytes &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;10 B&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1048576 | bytes &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;1 KB&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1073741824 | bytes &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;1 MB&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1.0995116e12 | bytes &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;1 GB&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+</div>
+
+<div class="wp-block dark margin0" ngNonBindable>
+
+  <h2>Boolean</h2>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isNull</h3>
+    <p><strong>Usage:</strong> <code>any | isNull</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; null | isNull &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNull &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isDefined</h3>
+    <p><strong>Usage:</strong> <code>any | isDefined</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isDefined &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; undefined | isDefined &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isUndefined</h3>
+    <p><strong>Usage:</strong> <code>any | isUndefined</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isUndefined &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; undefined | isUndefined &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isString</h3>
+    <p><strong>Usage:</strong> <code>any | isString</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isString &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; &apos;&apos; | isString &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isNumber</h3>
+    <p><strong>Usage:</strong> <code>any | isNumber</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.func = () =&gt; &#123;&#125;;
+<span class="hljs-keyword">this</span>.num = <span class="hljs-number">1</span>;
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; num | isNumber &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; func | isNumber &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isArray</h3>
+    <p><strong>Usage:</strong> <code>any | isArray</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];
+<span class="hljs-keyword">this</span>.num = <span class="hljs-number">1</span>;
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; num | isArray &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; arr | isArray &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isObject</h3>
+    <p><strong>Usage:</strong> <code>any | isObject</code></p>
+    <pre><code class="lang-typescript"><span class="hljs-keyword">this</span>.obj = &#123;a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span>&#125;;
+<span class="hljs-keyword">this</span>.num = <span class="hljs-number">1</span>;
+</code></pre>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; num | isObject &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; obj | isObject &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isGreaterThan</h3>
+    <p><strong>Usage:</strong> <code>number | isGreaterThan: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isGreaterThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isGreaterThan: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isGreaterThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isGreaterEqualThan</h3>
+    <p><strong>Usage:</strong> <code>number | isGreaterEqualThan: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isGreaterEqualThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isGreaterEqualThan: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isGreaterEqualThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isLessThan</h3>
+    <p><strong>Usage:</strong> <code>number | isLessThan: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isLessThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isLessThan: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isLessThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isLessEqualThan</h3>
+    <p><strong>Usage:</strong> <code>number | isLessEqualThan: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isLessEqualThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isLessEqualThan: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isLessEqualThan: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isEqualTo</h3>
+    <p><strong>Usage:</strong> <code>number | isEqualTo: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isEqualTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isEqualTo: &apos;1&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isEqualTo: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isEqualTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isNotEqualTo</h3>
+    <p><strong>Usage:</strong> <code>number | isNotEqualTo: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNotEqualTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNotEqualTo: &apos;1&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNotEqualTo: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isNotEqualTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isIdenticalTo</h3>
+    <p><strong>Usage:</strong> <code>number | isIdenticalTo: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isIdenticalTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isIdenticalTo: &apos;1&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isIdenticalTo: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isIdenticalTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+  <div class="pipe">
+    <h3><i class="fa fa-cubes"></i> isNotIdenticalTo</h3>
+    <p><strong>Usage:</strong> <code>number | isNotIdenticalTo: otherNumber</code></p>
+    <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNotIdenticalTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;false&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNotIdenticalTo: &apos;1&apos; &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 1 | isNotIdenticalTo: 2 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>&#123;&#123; 2 | isNotIdenticalTo: 1 &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> <span class="hljs-comment">&lt;!-- Output: &quot;true&quot; --&gt;</span>
+</code></pre>
+  </div>
+
+</div>
+

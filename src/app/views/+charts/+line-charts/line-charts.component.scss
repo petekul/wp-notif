@@ -1,0 +1,9 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_mixins.scss";
+@import "../../../../styles/custom";
+
+.wp-block {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+}

@@ -1,0 +1,16 @@
+<div class="wp-block light margin0">
+    <h3><i class="fa fa-bar-chart" aria-hidden="true"></i> Charts</h3>
+    <p>Built with D3 and SVG with Angular for rendering. All elements can be customized with CSS. </p>
+    <a href="https://swimlane.gitbooks.io/ngx-charts/content/" target="_blank"><button type="button" class="btn btn-secondary btn-sm">Read Full Documentation</button></a>    
+</div>
+
+<div class="wp-block dark padding0 margin0">
+    <nav class="wp-subnavigation">
+        <a class="nav-item nav-link" [routerLink]=" ['./bar-charts'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> Bar Charts </a>
+        <a class="nav-item nav-link" [routerLink]=" ['./line-charts'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> Line Charts </a>
+        <a class="nav-item nav-link" [routerLink]=" ['./pie-charts'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> Pie Charts </a>
+        <a class="nav-item nav-link" [routerLink]=" ['./other'] " routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}"> Other </a>
+    </nav>
+</div>
+
+<router-outlet></router-outlet>

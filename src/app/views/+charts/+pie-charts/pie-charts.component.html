@@ -1,0 +1,55 @@
+<div class="wp-block light margin0">
+    <div class="control-chart">
+        <label *ngFor="let country of single; let i = index">
+            <strong>{{country.name}} </strong> 
+            <div>
+                <input type="range" min="1" max="10000000" [value]="single[i].value" class="slider" (input)="onChangeSingle(i, $event)">
+                <span class="badge badge-secondary" style.background="{{config.colorScheme.domain[i]}}">
+                    {{single[i].value}}
+                </span>
+            </div>
+        </label>
+    </div>
+
+    <div class="chart-wrapper full">
+        <h5>Pie Grid Chart</h5>
+        <div>
+            <ngx-charts-pie-grid
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                (select)="onSelect($event)">
+            </ngx-charts-pie-grid>
+        </div>
+    </div>
+    <div class="chart-wrapper full">
+        <h5>Advanced Pie Chart</h5>
+        <div>
+            <ngx-charts-advanced-pie-chart
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                [gradient]="config.gradient"
+                (select)="onSelect($event)">
+            </ngx-charts-advanced-pie-chart>
+        </div>
+    </div>
+    <div class="chart-wrapper mb-0">
+        <h5>Pie Chart</h5>
+        <div>
+            <ngx-charts-pie-chart
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                [legend]="config.showLegend"
+                [explodeSlices]="config.explodeSlices"
+                [labels]="config.showLabels"
+                [doughnut]="config.doughnut"
+                [gradient]="config.gradient"
+                (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+</div>
+
+

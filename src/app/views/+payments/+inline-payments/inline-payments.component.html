@@ -1,0 +1,80 @@
+<section class="wrapper t" [style.background]="config.background">
+
+    <section class="edit">
+        <section class="overlay" [ngClass]="edit.active !== '' ? 'active' : ''" (click)="editElement('')"></section>
+
+        <section class="objects">
+
+            <section data-object="container" [ngClass]="{'active': edit.active == 'container'}" (click)="editElement('container')"></section>
+            <section data-object="input" [ngClass]="{'active': edit.active == 'input'}" (click)="editElement('input')" data-number="1"></section>
+            <section data-object="input" [ngClass]="{'active': edit.active == 'input'}" (click)="editElement('input')" data-number="2"></section>
+            <section data-object="input" [ngClass]="{'active': edit.active == 'input'}" (click)="editElement('input')" data-number="3"></section>
+            <section data-object="button" [ngClass]="{'active': edit.active == 'button'}" (click)="editElement('button')"></section>
+
+            <section class="popover" [ngClass]="edit.active !== '' ? 'active' : ''">
+                <h3>Button <span class="close-btn" (click)="editElement('')"></span></h3>
+                <div class="form-group">
+                    <label>Label</label>
+                    <input type="text" [(ngModel)]="config.container.button.label">
+                </div>
+                <div class="form-group colorpicker">
+                    <label>Color</label>
+                    <div>
+                        <input type="text" [(ngModel)]="config.container.button.background">
+                        <div class="color">
+                            <input type="color" [(ngModel)]="config.container.button.background">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </section>
+
+    <section [ngClass]="config.theme" class="worldpay-payment-component">
+        <form (ngSubmit)="onSubmit()">
+
+            <section class="section payment-details t" [style.background]="config.container.topBackground" [style.border-top-left-radius.px]="config.container.borderRadius"
+                [style.border-top-right-radius.px]="config.container.borderRadius" [style.border-color]="config.container.borderColor"
+                [style.border-width.px]="config.container.borderWidth">
+                <div class="details">
+                    <div>
+                        <div class="form-group card-number" [ngClass]="(form.cardType + ' ' + (form.cardNumber.model ? 'active': ''))">
+                            <input type="text" [textMask]="{mask: form.cardNumber.mask}" (ngModelChange)="getCardType($event)" name="card-number" size="22"
+                                [(ngModel)]="form.cardNumber.model" placeholder="**** **** **** 5467" class="form-control t" [style.color]="config.container.input.color"
+                                [style.background]="config.container.input.background" [style.text-indent]="config.container.input.textIndent">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group expiry-date">
+                            <input type="text" [textMask]="{mask: form.expiryDate.mask}" size="7" [value]="form.expiryDate.model" placeholder="MM/YY"
+                                class="form-control t" [style.color]="config.container.input.color" [style.background]="config.container.input.background"
+                                [style.text-indent]="config.container.input.textIndent">
+                        </div>
+                        <div class="form-group security-code">
+                            <input type="text" size="5" [value]="form.securityCode.model" placeholder="CVC" maxlength="4" class="form-control t" [style.color]="config.container.input.color"
+                                [style.background]="config.container.input.background" [style.text-indent]="config.container.input.textIndent">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section confirm t" [style.border-bottom-left-radius.px]="config.container.borderRadius" [style.border-bottom-right-radius.px]="config.container.borderRadius"
+                [style.background]="config.container.bottomBackground" [style.border-color]="config.container.borderColor" [style.border-width.px]="config.container.borderWidth"
+                [style.border-bottom-width.px]="config.container.borderWidth + 1">
+                <section class="submit">
+                    <button type="submit" class="btn btn-primary" [ngClass]="form.formState === 'loading' ? 'loading' : ''" [style.border-radius.px]="config.container.button.borderRadius"
+                        [style.background]="config.container.button.background" [style.color]="config.container.button.color">
+                        <img class="loader" src="assets/img/payments/light/loader.gif">
+                        <span class="status">{{form.formState}}</span>
+                        <span class="label">
+                            <i class="fa fa-lock"></i> {{config.container.button.label}} &pound;{{config.container.button.amount}}</span>
+                    </button>
+                </section>
+            </section>
+
+        </form>
+
+    </section>
+
+</section>

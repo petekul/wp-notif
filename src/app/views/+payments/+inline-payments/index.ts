@@ -1,0 +1,1 @@
+export { InlinePaymentsModule } from './inline-payments.module';

@@ -1,0 +1,1 @@
+export { OtherModule } from './other.module';

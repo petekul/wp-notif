@@ -1,0 +1,99 @@
+<div class="wp-block dark padding0 margin0">
+</div>
+
+<div class="wp-search-panel" [ngClass]="{'active': selected.length}">
+    <div class="wp-search-panel-left">
+        <div class="wp-block wp-search light margin0">
+            <div class="wp-big-search">
+                <input type="text" placeholder="Find a record" (keyup)="updateFilter($event)" />
+            </div>
+            <span class="text">by</span>
+            <div class="btn-group wp-filter">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Name
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </div>
+            <div class="wp-filter dropdown">
+                    <button (click)="productBtn = toggleStatus(productBtn)" class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span> Product </span>
+                    </button>
+                    <div class="dropdown-menu" [ngClass]="productBtn === true ? 'open' : 'closed'">
+                      <button class="dropdown-item" type="button">All</button>
+                      <button class="dropdown-item" type="button">MBD</button>
+                      <button class="dropdown-item" type="button">YMP</button>
+                    </div>
+            </div>
+            
+        </div>
+
+        <div class="wp-block double-pane dark">
+
+            <div class="btn-group wp-table-control">
+                <button type="button" class="btn btn-secondary" (click)="table.rowDetail.expandAllRows()">Expand All</button>
+                <button type="button" class="btn btn-secondary" (click)="table.rowDetail.collapseAllRows()">Collapse All</button>
+            </div>
+
+            <ngx-datatable
+                #table
+                class='wp-datatable'
+                [columns]="columns"
+                [columnMode]="'flex'"
+                [headerHeight]="'auto'"
+                [footerHeight]="'auto'"
+                [rowHeight]="'auto'"
+                [scrollbarH]="true"
+                [limit]="10"
+                [rows]='records'
+                [selected]="selected"
+                [selectionType]="'multiClick'"
+                (select)='onSelect($event)'
+                >
+                <ngx-datatable-row-detail [rowHeight]="80" (toggle)="onDetailToggle($event)">
+                    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                        <div class="column">
+                            <p><strong>ID</strong> <span>{{row.guid}}</span></p>
+                            <p><strong>Balance</strong> <span>{{row.balance}}</span></p>
+                        </div>
+                        <div class="column">
+                            <p><strong>Phone</strong> <span>{{row.phone}}</span></p>
+                            <p><strong>Address</strong> <span>{{row.address}}</span></p>
+                        </div>
+                        <div class="column">
+                            <p><strong>Age</strong> <span>{{row.age}}</span></p>
+                            <p><strong>Company</strong> <span>{{row.company}}</span></p>
+                        </div>
+                    </ng-template>
+                </ngx-datatable-row-detail>
+                <ngx-datatable-column name="Name" [flexGrow]="1" [minWidth]="160" [sortable]="true" [draggable]="false" [resizeable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Email" [flexGrow]="2" [minWidth]="250" [sortable]="false" [draggable]="false" [resizeable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Company" [flexGrow]="1" [minWidth]="120" [sortable]="false" [draggable]="false" [resizeable]="false"></ngx-datatable-column>
+                <ngx-datatable-column name="Gender" [flexGrow]="1" [minWidth]="100" [sortable]="false" [draggable]="false" [resizeable]="false"></ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+    <div class="wp-search-panel-right" [ngClass]="mobileCheckout === false ? 'open' : 'closed'" *ngIf="selected.length">
+        <h2 (click)="mobileCheckout = toggleStatus(mobileCheckout)">Manage Records <i class="fa fa-close"></i></h2>
+        <div class="wp-records">
+            <ul>
+                <li *ngFor='let sel of selected'>
+                    <i class="fa fa-remove" aria-hidden="true"></i> {{sel.name}}
+                </li>
+                <li *ngIf="!selected.length">No Selections</li>
+            </ul>
+        </div>
+        <div class="wp-controls">
+            <button type="button" class="btn btn-primary">Create</button>
+            <button type="button" class="btn btn-light">Cancel</button>
+        </div>
+    </div>
+    <div class="wp-mobile-checkout" [ngClass]="mobileCheckout === true ? 'open' : 'closed'" (click)="mobileCheckout = toggleStatus(mobileCheckout)" *ngIf="selected.length">
+        <h2>Manage Records</h2> <h2><span class="badge badge-secondary">{{ selected.length }}</span> selected </h2>
+    </div>
+</div>

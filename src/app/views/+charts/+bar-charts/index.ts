@@ -1,0 +1,1 @@
+export { BarChartsModule } from './bar-charts.module';

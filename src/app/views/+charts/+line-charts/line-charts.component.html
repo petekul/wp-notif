@@ -1,0 +1,91 @@
+<div class="wp-block light margin0">
+    <div class="control-chart">
+        <label *ngFor="let country of multi; let i = index">
+            <strong>{{country.name}} </strong> 
+
+            <div *ngFor="let series of multi[i].series; let i2 = index">
+                <input type="range" min="1" max="10000000" [value]="multi[i].series[i2].value" class="slider" (input)="onChangeMulti(i, i2, $event)">
+                <span class="badge badge-secondary" style.background="{{config.colorScheme.domain[i2]}}">
+                    {{multi[i].series[i2].value}}
+                </span>
+            </div>
+        </label>
+    </div>
+
+    <div class="chart-wrapper">
+        <h5>Line Chart</h5>
+        <div>
+            <ngx-charts-line-chart
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="multi"
+                [gradient]="config.gradient"
+                [xAxis]="config.showXAxis"
+                [yAxis]="config.showYAxis"
+                [legend]="config.showLegend"
+                [showXAxisLabel]="config.showXAxisLabel"
+                [showYAxisLabel]="config.showYAxisLabel"
+                [xAxisLabel]="config.xAxisLabel"
+                [yAxisLabel]="config.yAxisLabel"
+                (select)="onSelect($event)">
+            </ngx-charts-line-chart>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <h5>Area Chart</h5>
+        <div>
+            <ngx-charts-area-chart
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="multi"
+                [gradient]="config.gradient"
+                [xAxis]="config.showXAxis"
+                [yAxis]="config.showYAxis"
+                [legend]="config.showLegend"
+                [showXAxisLabel]="config.showXAxisLabel"
+                [showYAxisLabel]="config.showYAxisLabel"
+                [xAxisLabel]="config.xAxisLabel"
+                [yAxisLabel]="config.yAxisLabel"
+                (select)="onSelect($event)">
+            </ngx-charts-area-chart>
+        </div>
+    </div>
+    <div class="chart-wrapper mb-0">
+        <h5>Stacked Area Chart</h5>
+        <div>
+            <ngx-charts-area-chart-stacked
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="multi"
+                [gradient]="config.gradient"
+                [xAxis]="config.showXAxis"
+                [yAxis]="config.showYAxis"
+                [legend]="config.showLegend"
+                [showXAxisLabel]="config.showXAxisLabel"
+                [showYAxisLabel]="config.showYAxisLabel"
+                [xAxisLabel]="config.xAxisLabel"
+                [yAxisLabel]="config.yAxisLabel"
+                (select)="onSelect($event)">
+            </ngx-charts-area-chart-stacked>
+        </div>
+    </div>
+    <div class="chart-wrapper mb-0">
+        <h5>Normalized Area Chart</h5>
+        <div>
+            <ngx-charts-area-chart-normalized
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="multi"
+                [gradient]="config.gradient"
+                [xAxis]="config.showXAxis"
+                [yAxis]="config.showYAxis"
+                [legend]="config.showLegend"
+                [showXAxisLabel]="config.showXAxisLabel"
+                [showYAxisLabel]="config.showYAxisLabel"
+                [xAxisLabel]="config.xAxisLabel"
+                [yAxisLabel]="config.yAxisLabel"
+                (select)="onSelect($event)">
+            </ngx-charts-area-chart-normalized>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="wp-block light margin0">
+    <div class="control-chart">
+        <label *ngFor="let country of single; let i = index">
+            <strong>{{country.name}} </strong> 
+            <div>
+                <input type="range" min="1" max="10000000" [value]="single[i].value" class="slider" (input)="onChangeSingle(i, $event)">
+                <span class="badge badge-secondary" style.background="{{config.colorScheme.domain[i]}}">
+                    {{single[i].value}}
+                </span>
+            </div>
+        </label>
+    </div>
+
+    <div class="chart-wrapper">
+        <h5>Tree Map Chart</h5>
+        <div>
+            <ngx-charts-tree-map
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                (select)="onSelect($event)">
+            </ngx-charts-tree-map>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <h5>Number Card Chart</h5>
+        <div>
+            <ngx-charts-number-card
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                (select)="onSelect($event)">
+            </ngx-charts-number-card>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <h5>Gauge Chart</h5>
+        <div>
+            <ngx-charts-gauge
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                [min]="0"
+                [max]="100"
+                [angleSpan]="240"
+                [startAngle]="-120"
+                [units]="'alerts'"
+                [bigSegments]="10"
+                [smallSegments]="5"
+                (select)="onSelect($event)">
+            </ngx-charts-gauge>
+        </div>
+    </div>
+    <div class="chart-wrapper">
+        <h5>Linear Gauge Chart</h5>
+        <div>
+            <ngx-charts-linear-gauge
+                [view]="config.view"
+                [scheme]="config.colorScheme"
+                [results]="single"
+                [value]="60"
+                [previousValue]="80"
+                [min]="0"
+                [max]="100"
+                [units]="'alerts'"
+                (select)="onSelect($event)">
+            </ngx-charts-linear-gauge>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,296 @@
+<div class="wp-block light margin0">
+    <h3><i class="fa fa-file-text-o"></i> Forms</h3>
+    <p>Examples of form control styles, layout options, and custom components for creating a wide variety of forms.</p>
+    <a href="https://getbootstrap.com/docs/4.0/components/forms/" target="_blank"><button type="button" class="btn btn-secondary btn-sm">Read Full Documentation</button></a>    
+</div>
+
+<div class="wp-block dark margin0">
+    <h2 class="wp-block-title"> Inputs </h2>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form>
+                <div class="form-group">
+                    <label class="input-title">Email address</label>
+                    <input type="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Password</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Example select</label>
+                    <select class="form-control">
+                        <option disabled></option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Example textarea</label>
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="custom-controls-stacked">
+                        <label class="custom-control custom-radio">
+                            <input name="radio-stacked" type="radio" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Toggle this custom radio</span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input name="radio-stacked" type="radio" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Or toggle this other custom radio</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label class="input-title">Email</label>
+                    <input type="email" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label class="input-title">Password</label>
+                    <input type="password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Address</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Address 2</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="input-title">City</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="input-title">State</label>
+                        <select class="form-control">Choose</select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label class="input-title">Zip</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check custom-controls-stacked">
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Custom checkbox</span>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Custom checkbox</span>
+                        </label>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Check this custom checkbox</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="wp-block light margin0">
+    <h2 class="wp-block-title">Validation</h2>
+
+    <form>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="input-title">First name</label>
+                <input type="text" class="form-control is-valid" value="Mark" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="input-title">Last name</label>
+                <input type="text" class="form-control is-valid" value="Otto" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="input-title">City</label>
+                <input type="text" class="form-control is-invalid" required>
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label class="input-title">State</label>
+                <input type="text" class="form-control is-invalid" required>
+                <div class="invalid-feedback">
+                    Please provide a valid state.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label class="input-title">Zip</label>
+                <input type="text" class="form-control is-invalid" required>
+                <div class="invalid-feedback">
+                    Please provide a valid zip.
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+</div>
+
+<div class="wp-block dark margin0">
+    <h2 class="wp-block-title">Input group</h2>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <span class="input-group-addon">@example.com</span>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">https://example.com/users/</span>
+                        <input type="text" class="form-control" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
+                      
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <span class="input-group-addon">0.00</span>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <form>
+                <div class="form-group">    
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                    </div>
+                </div>
+
+                <div class="form-group">   
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group"> 
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" class="form-control" aria-label="Username" aria-describedby="sizing-addon2">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </span>
+                        <input type="text" class="form-control" aria-label="Text input with checkbox">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <label class="custom-control custom-radio">
+                                <input name="radio-stacked" type="radio" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </span>
+                        <input type="text" class="form-control" aria-label="Text input with radio button">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="wp-block light margin0">
+    <h2 class="wp-block-title"> Input mask </h2>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form>
+                <div class="form-group">
+                    <label class="input-title">Phone</label>
+                    <input [textMask]="{mask: input.phone.mask}" [value]="input.phone.model" placeholder="(048) 035-2364" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Date</label>
+                    <input [textMask]="{mask: input.date.mask}" [value]="input.date.model" placeholder="23/05/2015" type="text" class="form-control">
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <form>
+                <div class="form-group">
+                    <label class="input-title">Amount</label>
+                    <input [textMask]="{mask: input.pound.mask}" [value]="input.pound.model" placeholder="£532,532,352" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="input-title">Email</label>
+                    <input [value]="input.email.model" placeholder="john.smith@worldpay.com" type="email" class="form-control">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

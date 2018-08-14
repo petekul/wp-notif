@@ -1,0 +1,62 @@
+<section class="wrapper t" [style.background]="config.background">
+
+    <section class="config">
+    <h3>Theme</h3>
+    <ul>
+        <li *ngFor='let theme of themes.list' [ngClass]="themes.active === theme ? 'active' : ''" (click)="switchTheme(theme)">{{theme}}</li>
+    </ul>
+    </section>
+
+    <section [ngClass]="config.theme" class="worldpay-payment-component">
+        <form (ngSubmit)="onSubmit()">
+
+        <section class="section company">
+        <img class="logo" [src]="config.logo"> 
+        </section>
+
+        <section class="section payment-details t" [style.background]="config.container.topBackground" [style.border-top-left-radius.px]="config.container.borderRadius" [style.border-top-right-radius.px]="config.container.borderRadius" [style.border-color]="config.container.borderColor" [style.border-width.px]="config.container.borderWidth">
+        <ul class="cards">
+            <li><img class="animated" [ngClass]="{ 'fadeOut': form.cardType !== '', 'fadeIn': form.cardType === 'visa' }" [src]="'assets/img/payments/' + config.theme + '/visa-icon.png'"></li>
+            <li><img class="animated" [ngClass]="{ 'fadeOut': form.cardType !== '', 'fadeIn': form.cardType === 'mastercard' }" [src]="'assets/img/payments/' + config.theme + '/mastercard-icon.png'"></li>
+            <li><img class="animated" [ngClass]="{ 'fadeOut': form.cardType !== '', 'fadeIn': form.cardType === 'amex' }" [src]="'assets/img/payments/' + config.theme + '/amex-icon.png'"></li>
+        </ul>
+        <div class="details">
+            <div>
+            <div class="form-group card-number">
+                <label class="input-title t" [style.color]="config.container.key.color">Card number</label>
+                <input type="text" [textMask]="{mask: form.cardNumber.mask}" (ngModelChange)="getCardType($event)" name="card-number" size="22" [ngModel]="form.cardNumber.model" placeholder="4556 6749 3025 9967" class="form-control t" [style.color]="config.container.input.color" [style.background]="config.container.input.background" [style.text-indent]="config.container.input.textIndent">
+            </div>
+            </div>
+            <div>
+            <div class="form-group expiry-date">
+                <label class="input-title t" [style.color]="config.container.key.color">Expiry date</label>
+                <input type="text" [textMask]="{mask: form.expiryDate.mask}" size="9" [value]="form.expiryDate.model" placeholder="06/2019" class="form-control t" [style.color]="config.container.input.color" [style.background]="config.container.input.background" [style.text-indent]="config.container.input.textIndent">
+            </div>
+            <div class="form-group security-code">
+                <label class="input-title t" [style.color]="config.container.key.color">Security code</label>
+                <input type="text" size="5" [value]="form.securityCode.model" placeholder="192" maxlength="4" class="form-control t" [style.color]="config.container.input.color" [style.background]="config.container.input.background" [style.text-indent]="config.container.input.textIndent">
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section class="section confirm t" [style.border-bottom-left-radius.px]="config.container.borderRadius" [style.border-bottom-right-radius.px]="config.container.borderRadius" [style.background]="config.container.bottomBackground" [style.border-color]="config.container.borderColor" [style.border-width.px]="config.container.borderWidth" [style.border-bottom-width.px]="config.container.borderWidth + 1">
+        <section class="item">
+            <div>
+            <img [src]="config.container.item.img">
+            </div>
+            <div>
+                <h3 [style.color]="config.container.item.color"> {{config.container.item.name}} </h3>
+                <p [style.color]="config.container.item.color"> {{config.container.item.description}} </p>
+            </div>
+        </section>
+        <section class="submit">
+            <button type="submit" class="btn btn-primary t" [ngClass]="form.formState === 'loading' ? 'loading' : ''" [style.border-radius.px]="config.container.button.borderRadius" [style.background]="config.container.button.background" [style.color]="config.container.button.color"> <img class="loader" src="assets/img/payments/light/loader.gif"> <span class="status">{{form.formState}}</span> <span class="label"><i class="fa fa-lock"></i> {{config.container.button.label}} &pound;{{config.container.button.amount}}</span> </button>
+        </section>
+        </section>
+
+    </form>
+
+    </section>
+    
+</section>
